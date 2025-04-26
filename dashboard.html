@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="logo"><a href="index.html">🐾 PetCare</a></div>
+      <nav>
+        <ul>
+            <li><a href="#" data-section="summary">All Pet Summary</a></li>
+          <li><a href="#" data-section="pets">Pet Profile</a></li>
+          <li><a href="#" data-section="activities">Activities</a></li>
+          <li><a href="#" data-section="reminders">Reminders</a></li>
+          <li><a href="#" data-section="appointments">Appointments</a></li>
+          <li><a href="#" data-section="weight">Weight Tracker</a></li>
+          <li><a href="#" data-section="healthJournal">Health Monitoring</a></li>
+          <li><a href="#" data-section="insurance">Insurance</a></li>
+          <li><a href="#" data-section="nutrition">Meals</a></li>
+          <li><a href="#" data-section="emergency">Emergency Vets</a></li>
+          <li><a href="#" data-section="vaccination">Vaccination & Medication</a></li>
+          <li><a href="#" data-section="careTips">Expert Pet Care Tips</a></li>
+
+
+          <li><a href="#" id="logoutBtn">Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="dashboard">
+        <div class="user-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="User Icon" class="user-icon" />
+            <span id="userName">User</span>
+          </div>
+
+
+          <section class="content-section" id="summary">
+            <h2>📋 All Pet Summary </h2>
+            <div id="summaryContent">
+              <p>Loading pet summary...</p>
+            </div>
+          </section>
+          
+          
+          
+      <!-- Pets Section -->
+      <section class="content-section" id="pets">
+        <h2>Your Pets</h2>
+        <div class="pet-cards" id="petCards"></div>
+        <button id="addPetBtn" onclick="addPet()">+ Add New Pet</button>
+      </section>
+
+      <!-- Activities Section -->
+      <section class="content-section" id="activities">
+        <h2>Daily Tracker</h2>
+        <label id="selectedPetLabel">Please select a pet to track activities.</label>
+        <select id="petSelector"></select>
+        <form id="activityForm">
+          <input type="text" placeholder="Activity (e.g., Walk, Feeding)" id="activityName" required />
+          <input type="datetime-local" id="activityTime" required />
+          <button type="submit">Log Activity</button>
+        </form>
+        <ul id="activityList"></ul>
+      </section>
+
+      <!-- Reminders Section -->
+      <section class="content-section" id="reminders">
+        <h2>Reminders</h2>
+        <form id="reminderForm">
+          <input type="text" id="reminderTitle" placeholder="Reminder title" required />
+          <input type="datetime-local" id="reminderDateTime" required />
+
+          <select id="reminderCategory" required>
+            <option value="">-- Select Category --</option>
+            <option value="Feeding">Feeding</option>
+            <option value="Medication">Medication</option>
+            <option value="Walk">Walk</option>
+            <option value="Grooming">Grooming</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <select id="reminderRepeat">
+            <option value="none">Does not repeat</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+
+          <input type="text" id="reminderNotes" placeholder="Notes (optional)" />
+          <button type="submit">Add Reminder</button>
+        </form>
+        <ul id="reminderList"></ul>
+      </section>
+
+      <!-- Appointments Section -->
+      <section class="content-section" id="appointments">
+        <h2>Vet Appointments</h2>
+        <form id="appointmentForm">
+          <input type="text" id="clinicName" placeholder="Clinic Name" required />
+          <input type="datetime-local" id="appointmentDateTime" required />
+          <input type="text" id="appointmentNotes" placeholder="Notes (optional)" />
+          <div>
+            <input type="checkbox" id="appointmentReminder" />
+            <label for="appointmentReminder">Enable Reminder</label>
+          </div>
+          <button type="submit">Add Appointment</button>
+        </form>
+        <ul id="appointmentList"></ul>
+      </section>
+
+      <!-- Weight Tracker Section -->
+      <section class="content-section" id="weight">
+        <h2>⚖️ Weight Tracker</h2>
+        <div style="margin-bottom: 1rem;">
+          <input type="datetime-local" id="weightDateTime" />
+          <input type="number" id="weightInput" placeholder="Weight in kg" step="0.1" />
+          <button onclick="logWeightEntry()">Add Weight</button>
+        </div>
+        <canvas id="weightChart" width="400" height="200"></canvas>
+        <ul id="weightList"></ul>
+
+      </section>
+
+      <!-- Health Journal Section -->
+<section class="content-section" id="healthJournal">
+    <h2>📋 Health Journal</h2>
+    <form id="healthForm">
+      <input type="datetime-local" id="healthDate" required />
+      <input type="text" id="healthSymptom" placeholder="Symptom or observation" required />
+      <textarea id="healthNotes" placeholder="Additional notes (optional)" rows="3"></textarea>
+      <button type="submit">Add Entry</button>
+    </form>
+    <ul id="healthList"></ul>
+  </section>
+  
+  <!-- Insurance Section -->
+  <section class="content-section" id="insurance">
+    <h2>📄 Pet Insurance Info</h2>
+    <form id="insuranceForm">
+      <input type="text" id="provider" placeholder="Insurance Provider" required />
+      <input type="text" id="policyNumber" placeholder="Policy Number" required />
+      <input type="text" id="emergencyContact" placeholder="Emergency Contact Number" />
+      <input type="url" id="insuranceDoc" placeholder="Link to Policy Document (optional)" />
+      <textarea id="insuranceNotes" placeholder="Additional Notes"></textarea>
+      <button type="submit">Save Insurance Info</button>
+    </form>
+    <div id="insuranceDisplay"></div>
+  </section>
+  
+  <!-- Nutrition Section -->
+<section class="content-section" id="nutrition">
+    <h2>🍽️ Nutrition & Meal Planning</h2>
+    <form id="mealForm">
+      <select id="mealType" required>
+        <option value="">-- Select Meal Type --</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Snack">Snack</option>
+      </select>
+      <input type="datetime-local" id="mealTime" required />
+      <textarea id="mealNotes" placeholder="What was served? Any reactions?" rows="3"></textarea>
+      <button type="submit">Log Meal</button>
+    </form>
+    <ul id="mealList"></ul>
+  </section>
+  
+ 
+  
+  <!-- Emergency Vet Locator -->
+<section class="content-section" id="emergency">
+    <h2>🆘 Emergency Vet Locator</h2>
+    <p>Allow location access to see nearby vet clinics on the map.</p>
+    <div id="map" style="height: 400px; border-radius: 10px; margin: 1rem 0;"></div>
+    <ul id="clinicList"></ul>
+    <div style="margin: 1rem 0;">
+        <input type="text" id="clinicSearch" placeholder="Search by name..." style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc; width: 60%;" />
+        <label style="margin-left: 1rem;">
+          <input type="checkbox" id="openNowFilter" />
+          Open Now Only
+        </label>
+      </div>
+      
+  </section>
+
+<!-- Vaccination & Medication Tracker -->
+<section class="content-section" id="vaccination">
+    <h2>💉 Vaccination & Medication Tracker</h2>
+    <form id="vaccineForm">
+      <input type="text" id="vaccineName" placeholder="Name of Vaccine or Medication" required />
+      <input type="datetime-local" id="vaccineDate" required />
+      <textarea id="vaccineNotes" placeholder="Notes (optional)"></textarea>
+      <input type="datetime-local" id="vaccineReminder" placeholder="Reminder (optional)" />
+      <button type="submit">Add Record</button>
+    </form>
+    <ul id="vaccineList"></ul>
+  </section>
+  
+  <!--Pet care tips-->
+  <section id="careTips" class="content-section">
+    <h2>🐶 Expert Pet Care Tips</h2>
+    <div id="tipsContainer">
+      <p>Select a pet to view care tips based on their breed and age.</p>
+    </div>
+  </section>
+  
+  
+  
+
+    </main>
+  </div>
+</body>
+<script src="js/google-maps.js"></script>
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDanCGY0wb4zkR5_PdUjYb63hrKnGOtTuA&libraries=places&callback=initMap">
+</script>
+
+</html>

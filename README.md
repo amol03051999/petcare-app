@@ -1,0 +1,137 @@
+
+# 🐾 PetCare App
+
+## Introduction
+PetCare App is a complete pet management solution for pet owners. It allows users to create pet profiles, track daily activities, set reminders, schedule vet appointments, monitor health and weight, manage pet insurance, plan meals, track vaccinations/medications, and locate nearby emergency vets using Google Maps.  
+Everything you need to take better care of your pets — all in one app!
+
+## Project Type
+**Fullstack** (Frontend + Backend with Firebase)
+
+## Deployed App
+- **Frontend:** 
+- **Backend:** (Managed by Firebase Authentication and Firestore)
+- **Database:** [Firebase Firestore Console](https://console.firebase.google.com/u/1/project/petapp-751c5/overview)
+
+## Directory Structure
+```
+petcare-app/
+   ├── assets
+   │   ├── feature1.jpg
+   │   ├── feature2.jpg
+   │   ├── feature3.jpg
+   │   ├── hero-banner-1.jpg
+   │   ├── icon-bone.jpg
+   │   ├── icon-bowl.jpg
+   │   ├── icon-paw.jpg
+   │   └── icon-vet.jpg
+   ├── css/
+   │   └── styles.css
+   ├── js/
+   │   ├── auth.js
+   │   ├── dashboard.js
+   │   └── google-maps.js
+   ├── dashboard.html
+   ├── index.html
+   ├── login.html
+   ├── signup.html
+```
+
+## Video Walkthrough of the Project
+> [Attach your short 1–3 min project demo video link here]
+
+## Video Walkthrough of the Codebase
+> [Attach your short 1–5 min codebase explanation video link here]
+
+## Features
+-  User Authentication (Signup/Login)
+-  Create, Edit, and Delete Pet Profiles
+-  Daily Activity Tracker
+-  Reminders for tasks, grooming, medication, etc.
+-  Vet Appointment Scheduling (with reminders)
+-  Weight Tracker (with graphs using Chart.js)
+-  Health Journal for symptoms and observations
+-  Pet Insurance Management
+-  Meal Planning and Nutrition Tracker
+-  Emergency Vet Locator (using Google Maps)
+-  Vaccination and Medication Tracker
+-  Smart Pet Care Tips based on pet information
+-  Dashboard Summary for quick pet insights
+
+## Design Decisions & Assumptions
+- Firebase Authentication used for secure login/signup.
+- Firestore used for all data (pets, activities, reminders, etc.).
+- Google Maps API integration to find nearby emergency vets.
+- Each user manages their pets and pet-related activities independently.
+- Minimal UI libraries; app uses custom HTML/CSS for clean look.
+- Chart.js is used to display pet weight progress visually.
+
+## Installation & Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/petcare-app.git
+   cd petcare-app
+   ``
+
+3. Start a local server:
+use a Live Server extension in VSCode.
+
+3. Make sure your Firebase project is correctly set up with Authentication and Firestore Database.
+
+## Usage
+
+Open `index.html` → Sign up or log in → Access your personalized dashboard.
+
+Example:
+Email: testuser@example.com
+Password: password123
+```
+
+## Credentials
+
+| Role | Email | Password |
+|---|---|---|
+| Test User | `testuser@example.com` | `password123` |
+
+(You can also create your own account.)
+
+## APIs Used
+-  **Firebase Authentication** (User management)
+-  **Firebase Firestore** (Database for pets, activities, reminders, etc.)
+-  **Google Maps Places API** (Locate nearby emergency vets)
+-  **Chart.js** (for weight chart visualization)
+
+## API Endpoints
+
+- `/pets` — manage pet profiles
+- `/activities` — track daily pet activities
+- `/reminders` — set and edit reminders
+- `/appointments` — schedule vet visits
+- `/weights` — log and chart pet weight
+- `/health_logs` — record pet health incidents
+- `/insurance` — store pet insurance details
+- `/vaccinations` — track vaccinations and medications
+
+(All stored in Firebase Firestore.)
+
+## Technology Stack
+- **Frontend:**
+  - HTML5
+  - CSS3
+  - JavaScript (ES6 Modules)
+
+- **Backend:**
+  - Firebase Authentication
+  - Firebase Firestore Database
+
+- **APIs/Libraries:**
+  - Google Maps Places API
+  - Chart.js
+
+## 🚀 Future Improvements
+- Add push notifications for reminders.
+- Profile photo uploads for pets.
+- Advanced analytics for activities and health patterns.
+- Pet community feature (connect with other pet owners).
+
